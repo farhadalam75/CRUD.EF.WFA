@@ -41,6 +41,10 @@ namespace CRUD.EF.WFA
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +65,7 @@ namespace CRUD.EF.WFA
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // dataGridViewCustomer
             // 
@@ -68,6 +73,11 @@ namespace CRUD.EF.WFA
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CustomerId,
+            this.FirstName,
+            this.LastName,
+            this.City});
             this.dataGridViewCustomer.Location = new System.Drawing.Point(390, 12);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
             this.dataGridViewCustomer.Size = new System.Drawing.Size(398, 350);
@@ -142,6 +152,7 @@ namespace CRUD.EF.WFA
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxFirstName
             // 
@@ -150,6 +161,32 @@ namespace CRUD.EF.WFA
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(200, 20);
             this.textBoxFirstName.TabIndex = 0;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.DataPropertyName = "CustomerId";
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.Visible = false;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            // 
+            // City
+            // 
+            this.City.DataPropertyName = "LastName";
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
             // 
             // FormEF_CRUD
             // 
@@ -171,6 +208,7 @@ namespace CRUD.EF.WFA
             this.Controls.Add(this.textBoxFirstName);
             this.Name = "FormEF_CRUD";
             this.Text = "EF - Insert, Update, and Delete";
+            this.Load += new System.EventHandler(this.FormEF_CRUD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,6 +228,10 @@ namespace CRUD.EF.WFA
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn City;
     }
 }
 
