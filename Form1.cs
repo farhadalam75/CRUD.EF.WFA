@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,12 +48,19 @@ namespace CRUD.EF.WFA
             customer.Address = textBoxAddress.Text.Trim();
             using (DBEntities db = new DBEntities())
             {
-                db.Customers.Add(customer);
+                if (customer.CustomerId != 0) //Update
+                    db.Entry(customer).State = EntityState.Modified;
+                else //Insert
+                    db.Customers.Add(customer);
                 db.SaveChanges();
             }
             Clear();
             PopulateDataGridView();
-            MessageBox.Show("Submitted successfully");
+
+            if (customer.CustomerId != 0)
+                MessageBox.Show("Updated successfully");
+            else
+                MessageBox.Show("Submitted successfully");
         }
         void PopulateDataGridView()
         {
@@ -60,6 +68,24 @@ namespace CRUD.EF.WFA
             using (DBEntities db = new DBEntities())
             {
                 dataGridViewCustomer.DataSource = db.Customers.ToList<Customer>();
+            }
+        }
+
+        private void dataGridViewCustomer_DoubleClick(object sender, EventArgs e)
+        {
+            if(dataGridViewCustomer.CurrentRow.Index != -1)
+            {
+                customer.CustomerId = Convert.ToInt32(dataGridViewCustomer.CurrentRow.Cells["CustmerId"].Value);
+                using (DBEntities db = new DBEntities())
+                {
+                    customer = db.Customers.Where(x => x.CustomerId == customer.CustomerId).FirstOrDefault();
+                    textBoxFirstName.Text = customer.FirstName;
+                    textBoxLastName.Text = customer.LastName;
+                    textBoxCity.Text = customer.City;
+                    textBoxAddress.Text = customer.Address;
+                }
+                buttonSave.Text = "Update";
+                buttonDelete.Enabled = true;
             }
         }
     }

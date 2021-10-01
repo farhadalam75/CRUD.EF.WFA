@@ -82,6 +82,7 @@ namespace CRUD.EF.WFA
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
             this.dataGridViewCustomer.Size = new System.Drawing.Size(398, 350);
             this.dataGridViewCustomer.TabIndex = 6;
+            this.dataGridViewCustomer.DoubleClick += new System.EventHandler(this.dataGridViewCustomer_DoubleClick);
             // 
             // textBoxLastName
             // 
