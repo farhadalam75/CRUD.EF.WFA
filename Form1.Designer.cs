@@ -144,6 +144,7 @@ namespace CRUD.EF.WFA
             this.buttonDelete.TabIndex = 7;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonCancel
             // 
@@ -172,7 +173,6 @@ namespace CRUD.EF.WFA
             // 
             // FirstName
             // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FirstName.DataPropertyName = "FirstName";
             this.FirstName.HeaderText = "First Name";
             this.FirstName.Name = "FirstName";
@@ -185,7 +185,7 @@ namespace CRUD.EF.WFA
             // 
             // City
             // 
-            this.City.DataPropertyName = "LastName";
+            this.City.DataPropertyName = "City";
             this.City.HeaderText = "City";
             this.City.Name = "City";
             // 
